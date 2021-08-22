@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import DataTable from "./Table";
+import DataTable from "./DataTable";
 
 const useStyles = makeStyles((theme) => ({
   extendedIcon: {

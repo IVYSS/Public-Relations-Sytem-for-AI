@@ -6,8 +6,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
-const useStyles = makeStyles({
+import Button from "@material-ui/core/Button";
+const useStyles = makeStyles((theme) => ({
   container: {
     width: "90%",
     margin: "auto",
@@ -15,7 +15,17 @@ const useStyles = makeStyles({
   table: {
     width: "100%",
   },
-});
+  btn: {
+    background: "#2589ff",
+    color: "#fff",
+    marginRight: theme.spacing(1),
+    height: "90%",
+  },
+  row: {
+    height: 20,
+    border: "none",
+  },
+}));
 
 const datas = [
   {
@@ -40,15 +50,21 @@ function DataTable() {
       <Table className={classes.table} aria-label="Data Table">
         <TableBody>
           {datas.map((data, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} className={classes.row}>
               <TableCell component="th" scope="row">
                 {index + 1}
               </TableCell>
               <TableCell component="th" scope="row">
                 {data.name}
               </TableCell>
-              <TableCell align="right"></TableCell>
-              <TableCell align="right"></TableCell>
+              <TableCell align="right">
+                <Button variant="contained" className={classes.btn}>
+                  แก้ไข
+                </Button>
+                <Button variant="outlined" color="secondary">
+                  ลบ
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
