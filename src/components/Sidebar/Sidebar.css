@@ -7,6 +7,7 @@
 
 .side_bar {
   box-shadow: lightslategray;
+  position: fixed;
 }
 
 .bodyListMenu {
@@ -50,15 +51,19 @@
 }
 
 .Sidebar-link {
-  width: 100%;
+  width: 80%;
   height: 100%;
   background: white;
   color: #000;
   border-radius: 7px;
   display: flex;
-  justify-content: center;
-  align-content: center;
   text-decoration: none;
+
+}
+
+.Sidebar-link-active {
+  background: #2589ff;
+  color: aliceblue;
 }
 
 .Sidebar-link-active {
@@ -72,4 +77,11 @@
 
 img {
   max-width: 50rem;
+}
+
+.icon-list-menu svg{
+  font-size: 5rem;
+  padding: 0 auto;
+  margin: 0 auto;
+  color:"action";
 }
