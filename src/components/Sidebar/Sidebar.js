@@ -2,6 +2,15 @@ import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import "./Sidebar.css";
+import Overview from '../Overview/Overview';
+import { Icon } from '@material-ui/core';
+
+// Icon import
+import HomeIcon from '@material-ui/icons/Home';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import SchoolIcon from '@material-ui/icons/School';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 const useStyles = makeStyles((sidebar) => ({
   nav: {
@@ -38,16 +47,23 @@ const useStyles = makeStyles((sidebar) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    direction: "row",
+  },
+  side_bar_icon:{
+    fontSize: '2rem',
+    height : '100%', 
+    paddingLeft: '5%',
   },
 }));
 
 function Sidebar() {
   const styles = useStyles();
   const links = [
-    { name: "อบรม", path: "/admin/academic" },
-    { name: "หลักสูตร", path: "/admin/program" },
-    { name: "ประชาสัมพันธ์", path: "/admin/media" },
-    { name: "แอดมิน", path: "/admin/manage" },
+    { name: "หน้าแรก", path: "/admin/overview", icon: <HomeIcon className={styles.side_bar_icon}/>},
+    { name: "อบรม", path: "/admin/academic", icon: <MenuBookIcon className={styles.side_bar_icon}/>},
+    { name: "หลักสูตร", path: "/admin/program", icon: <SchoolIcon className={styles.side_bar_icon}/>},
+    { name: "ประชาสัมพันธ์", path: "/admin/media", icon: <NotificationsIcon className={styles.side_bar_icon}/>},
+    { name: "แอดมิน", path: "/admin/manage", icon: <SupervisorAccountIcon className={styles.side_bar_icon}/>},
   ];
   const test = (
     <Grid item xs={12} className={styles.list_menu}>
@@ -57,13 +73,14 @@ function Sidebar() {
 
   const renderLink = links.map((l, index) => {
     return (
-      <Grid item xs={12} key={index} className={styles.list_menu}>
+      <Grid item xs={12} key={index} className={styles.list_menu} spacing={1}>
         <NavLink
           className="Sidebar-link"
           activeClassName="Sidebar-link-active"
           to={l.path}
           exact
         >
+          {l.icon}
           <p>{l.name}</p>
         </NavLink>
       </Grid>
@@ -79,16 +96,17 @@ function Sidebar() {
       </div>
       {/* ------------------------------------------------------------------ */}
       <div className="Side_bar">
-        <Grid container>
-          <Grid item xs={3} className={styles.container_siderbar}>
-            {/* main side bar size 3 */}
-
-            <Grid className={styles.pic_bg}>
-              <img src="/1@2x.png" alt="#" />
-              {test}
-            </Grid>
-            <Grid container className={styles.bodyListMenu}>
-              {renderLink}
+        <Grid container item xs={12}>
+          <Grid container item xs={3}>
+            <Grid item xs={12} className={styles.container_siderbar}>
+              {/* main side bar size 3 */}
+              <Grid className={styles.pic_bg}>
+                <img src="/1@2x.png" alt="#" />
+                {test}
+              </Grid>
+              <Grid container className={styles.bodyListMenu}>
+                {renderLink}
+              </Grid>
             </Grid>
           </Grid>
           {/* ------------------------------------------------------------------- */}
