@@ -40,7 +40,7 @@ const useStyles = makeStyles((sidebar) => ({
   bodyListMenu: {
     justifyContent: "center",
     alignItems: "center",
-    height: "70%",
+    height: "50%",
   },
   list_menu: {
     height: "7%",
@@ -52,7 +52,7 @@ const useStyles = makeStyles((sidebar) => ({
   },
   side_bar_icon: {
     fontSize: "2rem",
-    height: "100%",
+    height: "50%",
     paddingLeft: "5%",
   },
 }));
@@ -126,7 +126,9 @@ function Sidebar() {
                 {test}
               </Grid>
               <Grid container className={styles.bodyListMenu}>
-                {renderLink}
+                <Grid container item xs={12}>
+                  {renderLink}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -134,7 +136,7 @@ function Sidebar() {
           <Grid item xs={9} className={styles.body} spacing={0}>
             <Switch>
               <Route path="/admin/overview" exact>
-                <p>overview</p>
+                <Overview />
               </Route>
               <Route path="/admin/academic">
                 <Academic />
