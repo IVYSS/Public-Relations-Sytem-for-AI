@@ -2,15 +2,16 @@ import { Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import "./Sidebar.css";
-import Overview from '../Overview/Overview';
-import { Icon } from '@material-ui/core';
+import Overview from "../Overview/Overview";
+import { Icon } from "@material-ui/core";
 
 // Icon import
-import HomeIcon from '@material-ui/icons/Home';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import SchoolIcon from '@material-ui/icons/School';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import HomeIcon from "@material-ui/icons/Home";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import SchoolIcon from "@material-ui/icons/School";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import Academic from "../Academic/Academic";
 
 const useStyles = makeStyles((sidebar) => ({
   nav: {
@@ -49,21 +50,41 @@ const useStyles = makeStyles((sidebar) => ({
     alignItems: "center",
     direction: "row",
   },
-  side_bar_icon:{
-    fontSize: '2rem',
-    height : '100%', 
-    paddingLeft: '5%',
+  side_bar_icon: {
+    fontSize: "2rem",
+    height: "100%",
+    paddingLeft: "5%",
   },
 }));
 
 function Sidebar() {
   const styles = useStyles();
   const links = [
-    { name: "หน้าแรก", path: "/admin/overview", icon: <HomeIcon className={styles.side_bar_icon}/>},
-    { name: "อบรม", path: "/admin/academic", icon: <MenuBookIcon className={styles.side_bar_icon}/>},
-    { name: "หลักสูตร", path: "/admin/program", icon: <SchoolIcon className={styles.side_bar_icon}/>},
-    { name: "ประชาสัมพันธ์", path: "/admin/media", icon: <NotificationsIcon className={styles.side_bar_icon}/>},
-    { name: "แอดมิน", path: "/admin/manage", icon: <SupervisorAccountIcon className={styles.side_bar_icon}/>},
+    {
+      name: "หน้าแรก",
+      path: "/admin/overview",
+      icon: <HomeIcon className={styles.side_bar_icon} />,
+    },
+    {
+      name: "อบรม",
+      path: "/admin/academic",
+      icon: <MenuBookIcon className={styles.side_bar_icon} />,
+    },
+    {
+      name: "หลักสูตร",
+      path: "/admin/program",
+      icon: <SchoolIcon className={styles.side_bar_icon} />,
+    },
+    {
+      name: "ประชาสัมพันธ์",
+      path: "/admin/media",
+      icon: <NotificationsIcon className={styles.side_bar_icon} />,
+    },
+    {
+      name: "แอดมิน",
+      path: "/admin/manage",
+      icon: <SupervisorAccountIcon className={styles.side_bar_icon} />,
+    },
   ];
   const test = (
     <Grid item xs={12} className={styles.list_menu}>
@@ -110,30 +131,28 @@ function Sidebar() {
             </Grid>
           </Grid>
           {/* ------------------------------------------------------------------- */}
-          <div className="bodyOverview">
-            <Grid item xs={9} className={styles.body} spacing={0}>
-              <Switch>
-                <Route path="/admin/overview" exact>
-                  <p>overview</p>
-                </Route>
-                <Route path="/admin/academic">
-                  <p>academic</p>
-                </Route>
-                <Route path="/admin/program">
-                  <p>program</p>
-                </Route>
-                <Route path="/admin/media">
-                  <p>media</p>
-                </Route>
-                <Route path="/admin/manage">
-                  <p>manage</p>
-                </Route>
-                <Route exact path="/admin">
-                  <Redirect to="/admin/overview" />
-                </Route>
-              </Switch>
-            </Grid>
-          </div>
+          <Grid item xs={9} className={styles.body} spacing={0}>
+            <Switch>
+              <Route path="/admin/overview" exact>
+                <p>overview</p>
+              </Route>
+              <Route path="/admin/academic">
+                <Academic />
+              </Route>
+              <Route path="/admin/program">
+                <p>program</p>
+              </Route>
+              <Route path="/admin/media">
+                <p>media</p>
+              </Route>
+              <Route path="/admin/manage">
+                <p>manage</p>
+              </Route>
+              <Route exact path="/admin">
+                <Redirect to="/admin/overview" />
+              </Route>
+            </Switch>
+          </Grid>
         </Grid>
       </div>
     </div>
