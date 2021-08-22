@@ -1,8 +1,8 @@
 import "./App.css";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import SideBar from "./components/Sidebar/Sidebar";
+import Home from "./components/User/Home/Home";
+import Login from "./components/Admin/Login/Login";
+import SideBar from "./components/Admin/Sidebar/Sidebar";
 function App() {
   return (
     <BrowserRouter>

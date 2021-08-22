@@ -1,4 +1,4 @@
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../../Admin/Sidebar/Sidebar";
 
 function Home() {
   return (
