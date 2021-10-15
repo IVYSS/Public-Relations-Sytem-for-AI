@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     height: 20,
     border: "none",
   },
+  cell: {
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
 }));
 
 const datas = [
@@ -51,13 +55,13 @@ function DataTable() {
         <TableBody>
           {datas.map((data, index) => (
             <TableRow key={index} className={classes.row}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className={classes.cell}>
                 {index + 1}
               </TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className={classes.cell}>
                 {data.name}
               </TableCell>
-              <TableCell align="right">
+              <TableCell align="right" className={classes.cell}>
                 <Button variant="contained" className={classes.btn}>
                   แก้ไข
                 </Button>
