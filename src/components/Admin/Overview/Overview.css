@@ -1,0 +1,9 @@
+.overview-body {
+  width: 100%;
+  background: grey;
+  height: 100%;
+}
+
+.graph {
+  background: rgb(252, 58, 58);
+}

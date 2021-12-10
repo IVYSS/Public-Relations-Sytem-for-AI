@@ -6,101 +6,41 @@ import Overview from "../Overview/Overview";
 import { Icon } from "@material-ui/core";
 
 // Icon import
-import HomeIcon from "@material-ui/icons/Home";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
-import SchoolIcon from "@material-ui/icons/School";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import Academic from "../Academic/Academic";
 
-const useStyles = makeStyles((sidebar) => ({
-  nav: {
-    backgroundColor: "#2589FF",
-    margin: 0,
-    padding: 0,
-    height: "7vh",
-  },
-  container_siderbar: {
-    height: "93vh",
-    backgroundColor: "#F1F7F8",
-    border: 0,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  side_bar: {
-    backgroundColor: "red",
-    borderRadius: 0,
-  },
-  pic_bg: {
-    height: "30%",
-    backgroundColor: "#2589FF",
-    alignItems: "center",
-  },
-
-  bodyListMenu: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: "50%",
-  },
-  list_menu: {
-    height: "7%",
-    margin: "5%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    direction: "row",
-  },
-  side_bar_icon: {
-    fontSize: "2rem",
-    height: "50%",
-    paddingLeft: "5%",
-  },
-}));
-
 function Sidebar() {
-  const styles = useStyles();
   const links = [
     {
       name: "หน้าแรก",
       path: "/admin/overview",
-      icon: <HomeIcon className={styles.side_bar_icon} />,
     },
     {
       name: "อบรม",
       path: "/admin/academic",
-      icon: <MenuBookIcon className={styles.side_bar_icon} />,
     },
     {
       name: "หลักสูตร",
       path: "/admin/program",
-      icon: <SchoolIcon className={styles.side_bar_icon} />,
     },
     {
       name: "ประชาสัมพันธ์",
       path: "/admin/media",
-      icon: <NotificationsIcon className={styles.side_bar_icon} />,
     },
     {
       name: "แอดมิน",
       path: "/admin/manage",
-      icon: <SupervisorAccountIcon className={styles.side_bar_icon} />,
     },
   ];
   const test = (
-    <Grid item xs={12} className={styles.list_menu}>
+    <Grid item xs={12}>
       <h1>test</h1>
     </Grid>
   );
 
   const renderLink = links.map((l, index) => {
     return (
-      <Grid item xs={12} key={index} className={styles.list_menu} spacing={1}>
-        <NavLink
-          className="Sidebar-link"
-          activeClassName="Sidebar-link-active"
-          to={l.path}
-          exact
-        >
+      <Grid item xs={12} key={index} spacing={1}>
+        <NavLink activeClassName="Sidebar-link-active" to={l.path} exact>
           {l.icon}
           <p>{l.name}</p>
         </NavLink>
@@ -111,21 +51,17 @@ function Sidebar() {
   return (
     <div className="body">
       <div className="nav_bar">
-        <Grid container className={styles.nav}>
+        <Grid container>
           <Grid item xs={12}></Grid>
         </Grid>
       </div>
       {/* ------------------------------------------------------------------ */}
-      <div className="Side_bar">
+      <div>
         <Grid container item xs={12}>
           <Grid container item xs={3}>
-            <Grid item xs={12} className={styles.container_siderbar}>
+            <Grid item xs={12}>
               {/* main side bar size 3 */}
-              <Grid className={styles.pic_bg}>
-                <img src="/1@2x.png" alt="#" />
-                {test}
-              </Grid>
-              <Grid container className={styles.bodyListMenu}>
+              <Grid container>
                 <Grid container item xs={12}>
                   {renderLink}
                 </Grid>
@@ -133,7 +69,7 @@ function Sidebar() {
             </Grid>
           </Grid>
           {/* ------------------------------------------------------------------- */}
-          <Grid item xs={9} className={styles.body} spacing={0}>
+          <Grid item xs={9} spacing={0}>
             <Switch>
               <Route path="/admin/overview" exact>
                 <Overview />
